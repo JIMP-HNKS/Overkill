@@ -25,7 +25,9 @@
 #define OVK_UNI1_I_SUB                  0x41
 #define OVK_UNI1_I_MUL                  0x42
 #define OVK_UNI1_I_DIV                  0x43
-#define OVK_UNI1_I_SQRT                 0x44
+#define OVK_UNI1_I_INT                  0x44
+#define OVK_UNI1_I_FRACT                0x45
+#define OVK_UNI1_I_MOD                  0x46
 
 typedef enum {
     OVK_ERR_SUCCESS = 0,

@@ -207,7 +207,7 @@ ovk_err_t ovk_uni1_process_opcode(
 
                 if (err) return err;
 
-                prog->program_pos += 4;
+                prog->program_pos += 5;
             }
             break;
         case OVK_UNI1_I_PUSHV:
@@ -245,7 +245,49 @@ ovk_err_t ovk_uni1_process_opcode(
                 if (value == 0.0)
                     prog->program_pos = address;
                 else
-                    prog->program_pos += 4;
+                    prog->program_pos += 5;
+            }
+            break;
+        case OVK_UNI1_I_JMP1:
+            {
+                unsigned int address = *((unsigned int*)(prog->program_data + prog->program_pos + 1));
+                float value = -1.0;
+
+                ovk_err_t err = ovk_pop(ctx, &value);
+                if (err) return err;
+
+                if (value == 1.0)
+                    prog->program_pos = address;
+                else
+                    prog->program_pos += 5;
+            }
+            break;
+        case OVK_UNI1_I_JMPN0:
+            {
+                unsigned int address = *((unsigned int*)(prog->program_data + prog->program_pos + 1));
+                float value = -1.0;
+
+                ovk_err_t err = ovk_pop(ctx, &value);
+                if (err) return err;
+
+                if (value != 0.0)
+                    prog->program_pos = address;
+                else
+                    prog->program_pos += 5;
+            }
+            break;
+        case OVK_UNI1_I_JMPN1:
+            {
+                unsigned int address = *((unsigned int*)(prog->program_data + prog->program_pos + 1));
+                float value = -1.0;
+
+                ovk_err_t err = ovk_pop(ctx, &value);
+                if (err) return err;
+
+                if (value != 1.0)
+                    prog->program_pos = address;
+                else
+                    prog->program_pos += 5;
             }
             break;
         
@@ -298,6 +340,86 @@ ovk_err_t ovk_uni1_process_opcode(
                 prog->program_pos++;
             }
             break;
+        case OVK_UNI1_I_MUL:
+            {
+                float v1 = 0.0, v2 = 0.0;
+                ovk_err_t err;
+
+                err = ovk_pop(ctx, &v2);
+                if (err) return err;
+                err = ovk_pop(ctx, &v1);
+                if (err) return err;
+
+                err = ovk_push(ctx, v1 * v2);
+                if (err) return err;
+
+                prog->program_pos++;
+            }
+            break;
+        case OVK_UNI1_I_DIV:
+            {
+                float v1 = 0.0, v2 = 0.0;
+                ovk_err_t err;
+
+                err = ovk_pop(ctx, &v2);
+                if (err) return err;
+                err = ovk_pop(ctx, &v1);
+                if (err) return err;
+
+                err = ovk_push(ctx, v1 / v2);
+                if (err) return err;
+
+                prog->program_pos++;
+            }
+            break;
+        case OVK_UNI1_I_INT:
+            {
+                float v1 = 0.0;
+                ovk_err_t err;
+
+                err = ovk_pop(ctx, &v1);
+                if (err) return err;
+
+                err = ovk_push(ctx, (float)((int)v1));
+                if (err) return err;
+
+                prog->program_pos++;
+            }
+            break;
+        case OVK_UNI1_I_FRACT:
+            {
+                float v1 = 0.0;
+                ovk_err_t err;
+
+                err = ovk_pop(ctx, &v1);
+                if (err) return err;
+
+                err = ovk_push(ctx, v1 - (float)((int)v1));
+                if (err) return err;
+
+                prog->program_pos++;
+            }
+            break;
+        case OVK_UNI1_I_MOD:
+            {
+                float v1 = 0.0, v2 = 0.0;
+                float div;
+                ovk_err_t err;
+
+                err = ovk_pop(ctx, &v2);
+                if (err) return err;
+                err = ovk_pop(ctx, &v1);
+                if (err) return err;
+
+                div = v1 / v2;
+                div = (float)((int)div);
+
+                err = ovk_push(ctx, v1 - v2 * div);
+                if (err) return err;
+
+                prog->program_pos++;
+            }
+            break;
         
         case OVK_UNI1_I_SETV:
             {
@@ -333,8 +455,6 @@ ovk_err_t ovk_uni1_process_opcode(
             {
                 char variant_id = prog->program_data[prog->program_pos + 1];
                 ovk_variant_access_t access = ctx->variant_access[variant_id];
-
-                printf("%d, %d\n", variant_id, access);
 
                 if (access == OVK_VARIANT_READONLY || access == OVK_VARIANT_NULL)
                     return OVK_ERR_VARIANT_NOWRITE;
