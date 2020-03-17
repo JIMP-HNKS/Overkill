@@ -29,7 +29,7 @@ class UNI1JumpInstruction implements IInstruction {
     }
 }
 
-class UNI1MathInstruction implements IInstruction {
+class UNI1ZeroOpInstruction implements IInstruction {
     public size = 1
 
     constructor(
@@ -176,6 +176,7 @@ export class UNI1Target extends Target {
         new UNI1SetInstruction("setv0", 0x20),
         new UNI1SetInstruction("setv1", 0x21),
         new UNI1SetInstruction("setv", 0x22),
+        new UNI1ZeroOpInstruction("copy", 0x23),
 
         new UNI1JumpInstruction("jmp", 0x30),
         new UNI1JumpInstruction("jmp0", 0x31),
@@ -183,10 +184,10 @@ export class UNI1Target extends Target {
         new UNI1JumpInstruction("jmpn0", 0x33),
         new UNI1JumpInstruction("jmpn1", 0x34),
 
-        new UNI1MathInstruction("add", 0x40),
-        new UNI1MathInstruction("sub", 0x41),
-        new UNI1MathInstruction("mul", 0x42),
-        new UNI1MathInstruction("div", 0x43),
-        new UNI1MathInstruction("sqrt", 0x44),
+        new UNI1ZeroOpInstruction("add", 0x40),
+        new UNI1ZeroOpInstruction("sub", 0x41),
+        new UNI1ZeroOpInstruction("mul", 0x42),
+        new UNI1ZeroOpInstruction("div", 0x43),
+        new UNI1ZeroOpInstruction("sqrt", 0x44),
     ]
 }

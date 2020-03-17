@@ -83,6 +83,7 @@ The [Game of Life](https://github.com/JIMP-HNKS/P1-Life) (`TGOL` target) support
 * `setv0(20) <varying>` - set the value of a varying to 0
 * `setv1(21) <varying>` - set the value of a varying to 1
 * `setv(22) <varying>` - pop a value from the stack and set it as a value of a varying
+* `copy(23)` - duplicate the value on top of the stack
 
 **Control flow:**
 * `jmp(30) <address>` - jump to a given position in the shader
