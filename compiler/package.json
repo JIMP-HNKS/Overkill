@@ -1,0 +1,21 @@
+{
+  "name": "overkill-compiler",
+  "version": "1.0.0",
+  "description": "OVERKILL compiler",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node build"
+  },
+  "author": "HNKS",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^8.1.0",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^8.1.0",
+    "@types/node": "^13.9.1",
+    "@types/yargs": "^15.0.4"
+  }
+}

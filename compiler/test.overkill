@@ -1,0 +1,9 @@
+pushc 1
+pushv global_coords_x
+sub
+setv out_pixel_red
+
+pushv global_coords_y
+setv out_pixel_green
+
+setv1 out_pixel_blue
