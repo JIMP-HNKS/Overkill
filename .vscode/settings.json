@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.beat": "json",
+        "overkill.h": "c"
+    }
+}

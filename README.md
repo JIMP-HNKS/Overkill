@@ -65,7 +65,7 @@ By default, Overkill comes with 6 varyings:
 * `-W`, `out_pixel_red(10)` - the R component of the output pixel, <0, 1>
 * `-W`, `out_pixel_green(11)` - the G component of the output pixel, <0, 1>
 * `-W`, `out_pixel_blue(12)` - the B component of the output pixel, <0, 1>
-* `R-`, `random(FF)` - a source of randomness, <0, 1>
+* `R-`, `random(F0)` - a source of randomness, <0, 1>
 
 #### Game of Life varyings
 

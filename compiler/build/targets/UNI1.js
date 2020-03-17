@@ -20,7 +20,7 @@ class UNI1JumpInstruction {
         return buf;
     }
 }
-class UNI1MathInstruction {
+class UNI1ZeroOpInstruction {
     constructor(name, opcode) {
         this.name = name;
         this.opcode = opcode;
@@ -140,16 +140,17 @@ class UNI1Target extends target_1.Target {
             new UNI1SetInstruction("setv0", 0x20),
             new UNI1SetInstruction("setv1", 0x21),
             new UNI1SetInstruction("setv", 0x22),
+            new UNI1ZeroOpInstruction("copy", 0x23),
             new UNI1JumpInstruction("jmp", 0x30),
             new UNI1JumpInstruction("jmp0", 0x31),
             new UNI1JumpInstruction("jmp1", 0x32),
             new UNI1JumpInstruction("jmpn0", 0x33),
             new UNI1JumpInstruction("jmpn1", 0x34),
-            new UNI1MathInstruction("add", 0x40),
-            new UNI1MathInstruction("sub", 0x41),
-            new UNI1MathInstruction("mul", 0x42),
-            new UNI1MathInstruction("div", 0x43),
-            new UNI1MathInstruction("sqrt", 0x44),
+            new UNI1ZeroOpInstruction("add", 0x40),
+            new UNI1ZeroOpInstruction("sub", 0x41),
+            new UNI1ZeroOpInstruction("mul", 0x42),
+            new UNI1ZeroOpInstruction("div", 0x43),
+            new UNI1ZeroOpInstruction("sqrt", 0x44),
         ];
     }
 }

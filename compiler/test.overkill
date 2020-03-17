@@ -1,9 +1,9 @@
-pushc 1
 pushv global_coords_x
-sub
-setv out_pixel_red
+jmp0 a
+jmp b
 
-pushv global_coords_y
-setv out_pixel_green
+a:
+pushc 0.42
 
-setv1 out_pixel_blue
+b:
+pushc 0.66
