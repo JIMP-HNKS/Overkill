@@ -7,8 +7,10 @@ const fs_extra_1 = require("fs-extra");
 const lineutil_1 = require("./lineutil");
 const error_1 = require("./error");
 const UNI1_1 = require("./targets/UNI1");
+const TGOL_1 = require("./targets/TGOL");
 const supportedTargets = [
-    new UNI1_1.UNI1Target()
+    new UNI1_1.UNI1Target(),
+    new TGOL_1.TGOLTarget()
 ];
 const files = yargs.argv._;
 if (!files.length) {

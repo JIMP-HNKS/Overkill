@@ -188,6 +188,8 @@ export class UNI1Target extends Target {
         new UNI1ZeroOpInstruction("sub", 0x41),
         new UNI1ZeroOpInstruction("mul", 0x42),
         new UNI1ZeroOpInstruction("div", 0x43),
-        new UNI1ZeroOpInstruction("sqrt", 0x44),
+        new UNI1ZeroOpInstruction("int", 0x44),
+        new UNI1ZeroOpInstruction("fract", 0x45),
+        new UNI1ZeroOpInstruction("mod", 0x46),
     ]
 }

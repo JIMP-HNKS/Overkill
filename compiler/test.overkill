@@ -1,9 +1,26 @@
+// Interlacing pattern
+pushv global_coords_y
+pushc 8
+mul
+int
+pushc 2
+mod
+jmp1 on
+jmp off
+
+off:
 pushv global_coords_x
-jmp0 a
-jmp b
+setv out_pixel_red
+setv1 out_pixel_blue
+jmp done
 
-a:
-pushc 0.42
+on:
+pushc 1
+pushv global_coords_x
+sub
+setv out_pixel_red
+setv1 out_pixel_blue
+jmp done
+jmp done
 
-b:
-pushc 0.66
+done:

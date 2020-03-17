@@ -97,4 +97,6 @@ The [Game of Life](https://github.com/JIMP-HNKS/P1-Life) (`TGOL` target) support
 * `sub(41)` - pops 2 values from the stack, subtracts them, pushes the result onto the stack
 * `mul(42)` - pops 2 values from the stack, multiplies them, pushes the result onto the stack
 * `div(43)` - pops 2 values from the stack, divides them, pushes the result onto the stack
-* `sqrt(44)` - pops a value from the stack then pushes its square root onto the stack
+* `int(44)` - pops a value from the stack then pushes it back, but without the fractional part
+* `fract(45)` - pops a value from the stack then pushes it back, but only the fractional part
+* `mod(46)` - pops 2 values from the stack, divides them, pushes the remainder onto the stack

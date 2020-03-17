@@ -7,9 +7,11 @@ import { getLines } from "./lineutil";
 import { OvkError } from "./error";
 import { UNI1Target } from "./targets/UNI1";
 import { Target } from "./targets/target";
+import { TGOLTarget } from "./targets/TGOL";
 
 const supportedTargets: Target[] = [
-    new UNI1Target()
+    new UNI1Target(),
+    new TGOLTarget()
 ]
 const files: string[] = yargs.argv._
 
