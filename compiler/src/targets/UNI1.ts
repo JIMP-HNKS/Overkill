@@ -191,5 +191,7 @@ export class UNI1Target extends Target {
         new UNI1ZeroOpInstruction("int", 0x44),
         new UNI1ZeroOpInstruction("fract", 0x45),
         new UNI1ZeroOpInstruction("mod", 0x46),
+        new UNI1ZeroOpInstruction("max", 0x47),
+        new UNI1ZeroOpInstruction("min", 0x48),
     ]
 }

@@ -1,26 +1,78 @@
-// Interlacing pattern
-pushv global_coords_y
-pushc 8
+pushv cell_state
+jmp1 cell_paint
+
+bg_paint:
+setv1 out_pixel_red
+setv1 out_pixel_green
+setv1 out_pixel_blue
+jmp end
+
+cell_paint:
+// Setup edge shadow - left edge
+pushv cell_coords_x
+pushc 10
 mul
-int
-pushc 2
-mod
-jmp1 on
-jmp off
-
-off:
-pushv global_coords_x
-setv out_pixel_red
-setv1 out_pixel_blue
-jmp done
-
-on:
 pushc 1
-pushv global_coords_x
-sub
-setv out_pixel_red
-setv1 out_pixel_blue
-jmp done
-jmp done
+min
+pushc 0.2
+mul
+pushc 0.8
+add
 
-done:
+// Right edge
+pushc 1
+pushv cell_coords_x
+sub
+pushc 10
+mul
+pushc 1
+min
+pushc 0.2
+mul
+pushc 0.8
+add
+
+// Left & right
+mul
+
+// Bottom edge
+pushc 1
+pushv cell_coords_y
+sub
+pushc 7
+mul
+pushc 1
+min
+pushc 0.4
+mul
+pushc 0.6
+add
+
+// Top edge
+pushv cell_coords_y
+pushc 10
+mul
+pushc 1
+min
+pushc 0.1
+mul
+pushc 0.9
+add
+
+// All shadows
+mul
+mul
+copy
+
+// Gradient
+pushc 1
+pushv cell_coords_y
+sub
+mul
+
+setv out_pixel_red
+setv out_pixel_blue
+
+jmp end
+
+end:

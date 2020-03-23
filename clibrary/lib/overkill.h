@@ -28,6 +28,8 @@
 #define OVK_UNI1_I_INT                  0x44
 #define OVK_UNI1_I_FRACT                0x45
 #define OVK_UNI1_I_MOD                  0x46
+#define OVK_UNI1_I_MAX                  0x47
+#define OVK_UNI1_I_MIN                  0x48
 
 typedef enum {
     OVK_ERR_SUCCESS = 0,

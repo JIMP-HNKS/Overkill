@@ -420,6 +420,38 @@ ovk_err_t ovk_uni1_process_opcode(
                 prog->program_pos++;
             }
             break;
+        case OVK_UNI1_I_MAX:
+            {
+                float v1 = 0.0, v2 = 0.0;
+                ovk_err_t err;
+
+                err = ovk_pop(ctx, &v2);
+                if (err) return err;
+                err = ovk_pop(ctx, &v1);
+                if (err) return err;
+
+                err = ovk_push(ctx, v1 > v2 ? v1 : v2);
+                if (err) return err;
+
+                prog->program_pos++;
+            }
+            break;
+        case OVK_UNI1_I_MIN:
+            {
+                float v1 = 0.0, v2 = 0.0;
+                ovk_err_t err;
+
+                err = ovk_pop(ctx, &v2);
+                if (err) return err;
+                err = ovk_pop(ctx, &v1);
+                if (err) return err;
+
+                err = ovk_push(ctx, v1 < v2 ? v1 : v2);
+                if (err) return err;
+
+                prog->program_pos++;
+            }
+            break;
         
         case OVK_UNI1_I_SETV:
             {

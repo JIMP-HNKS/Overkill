@@ -100,3 +100,5 @@ The [Game of Life](https://github.com/JIMP-HNKS/P1-Life) (`TGOL` target) support
 * `int(44)` - pops a value from the stack then pushes it back, but without the fractional part
 * `fract(45)` - pops a value from the stack then pushes it back, but only the fractional part
 * `mod(46)` - pops 2 values from the stack, divides them, pushes the remainder onto the stack
+* `max(47)` - pops 2 values from the stack then pushes back the larger one
+* `min(48)` - pops 2 values from the stack then pushes back the smaller one
